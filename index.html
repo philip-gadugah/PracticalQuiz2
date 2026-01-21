@@ -118,14 +118,15 @@
                 </a-sphere>
 
                 <!-- Moon Orbit Ring -->
-                <a-ring radius-inner="0.8" radius-outer="0.82" rotation="-85 0 0" color="#888"></a-ring>
+                <a-ring radius-inner="0.7" radius-outer="0.72" rotation="-85 0 0" color="#888" segments-theta="128"
+                    theta-length="360"></a-ring>
 
                 <!-- Moon Orbit -->
                 <a-entity rotation="0 0 5"
                     animation="property: rotation; to: 0 360 0; dur: 8000; loop: true; easing: linear">
 
                     <!-- Moon -->
-                    <a-sphere position="0.8 0 0" radius="0.1" color="#ccc" material="roughness: 1; src: #Moon"
+                    <a-sphere position="0.7 0 0" radius="0.1" color="#ccc" material="roughness: 1; src: #Moon"
                         animation="property: rotation; to: 0 360 0; dur: 8000; loop: true; easing: linear">
                         <a-entity troika-text="
                                         value: Moon;
