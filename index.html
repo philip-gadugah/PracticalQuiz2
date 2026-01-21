@@ -5,13 +5,14 @@
     <meta charset="utf-8">
     <title>PS/CSC/22/0034</title>
     <script src="script/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-troika-text/dist/aframe-troika-text.min.js"></script>
 </head>
 
 <body>
     <a-scene background="color: #000010" vr-mode-ui="enabled: true">
 
         <!-- Assets -->
-        <a-asset>
+        <a-assets>
             <img src="texture/2k_earth_daymap.jpg" alt="Earth" id="Earth">
             <img src="texture/2k_moon.jpg" alt="Moon" id="Moon">
             <img src="texture/2k_saturn.jpg" alt="Saturn" id="Saturn">
@@ -26,15 +27,14 @@
             <img src="texture/2k_stars.jpg" alt="Stars" id="Stars">
             <img src="texture/2k_stars_milky_way.jpg" alt="milky_way" id="MilkyWay">
             <img src="texture/2k_sun.jpg" alt="Sun" id="Sun">
-        </a-asset>
-        <a-assets>
-            <a-asset-item id="exoFont" src="https//cdn.aframe.io/fonts/Exo2Bold.fnt">
-            </a-asset-item>
         </a-assets>
 
         <!-- Building the Ubiverse around the Sun and planets -->
         <a-sphere radius="100" material="src: #MilkyWay; side: back; roughness: 1; metalness: 0"
             animation="property: rotation; to: 0 360 0; dur: 600000; loop: true; easing: linear"></a-sphere>
+        <a-sky material="src: #Stars; side: back; roughness: 1; metalness: 0"
+            animation="property: rotation; to: 0 360 0; dur: 1200000; loop: true; easing: linear">
+        </a-sky>
 
         <!-- Camera -->
         <a-entity position="0 6 22">
@@ -49,9 +49,12 @@
         <!-- Sun -->
         <a-sphere radius="2" color="#ffaa00" position="0 0 0" material="roughness: 1; src: #Sun"
             animation="property: rotation; to: 0 360 0; dur: 90000; loop: true; easing: linear">
-            <a-text value="SUN" align="center" position="0 2.5 0" rotation="0 0 0" width="4" color="#ffff00"
-                font="#exoFont">
-            </a-text>
+            <a-entity troika-text="
+                        value: Sun;
+                        color: white;
+                        fontSize: 0.4;
+                        align: center" position="0 2.5 0" rotation="0 0 0">
+            </a-entity>
         </a-sphere>
 
         <!-- Orbits -->
@@ -76,20 +79,24 @@
         <a-entity animation="property: rotation; to: 0 360 0; dur: 3000; loop: true; easing: linear">
             <a-sphere position="3 0 0" radius="0.2" color="#aaa" material="roughness: 1; src: #Mercury"
                 animation="property: rotation; to: 0 360 0; dur: 3000; loop: true; easing: linear">
+                <a-entity troika-text="
+                        value: MERCURY;
+                        color: white;
+                        fontSize: 0.15;
+                        align: center" position="0 0.4 0" rotation="0 0 0">
             </a-sphere>
-            <a-text value="MERCURY" align="center" position="0 0.5 0" rotation="0 0 0" width="2" color="#ffff00"
-                font="#exoFont">
-            </a-text>
         </a-entity>
 
         <!-- Venus -->
         <a-entity animation="property: rotation; to: 0 360 0; dur: 5000; loop: true; easing: linear">
             <a-sphere position="4 0 0" radius="0.35" color="#e6b566" material="roughness: 1; src: #Venus"
                 animation="property: rotation; to: 0 -360 0; dur: 5000; loop: true; easing: linear">
+                <a-entity troika-text="
+                                value: VENUS;
+                                color: white;
+                                fontSize: 0.2;
+                                align: center" position="0 0.5 0" rotation="0 0 0">
             </a-sphere>
-            <a-text value="VENUS" align="center" position="0 0.5 0" rotation="0 0 0" width="2.5" color="#ffff00"
-                font="#exoFont">
-            </a-text>
         </a-entity>
 
         <!-- EARTH ORBIT AROUND SUN -->
@@ -102,26 +109,31 @@
                 <a-sphere radius="0.4" color="#2a6cff"
                     animation="property: rotation; to: 0 360 0; dur: 30000; loop: true; easing: linear"
                     material="roughness: 1; src: #Earth">
+                    <a-entity troika-text="
+                                        value: Earth;
+                                        color: white;
+                                        fontSize: 0.2;
+                                        align: center" position="0 0.6 0" rotation="0 0 0">
+                    </a-entity>
                 </a-sphere>
-                <a-text value="EARTH" align="center" position="0 0.6 0" rotation="0 0 0" width="3" color="#ffff00"
-                    font="#exoFont">
-
-                </a-text>
 
                 <!-- Moon Orbit Ring -->
                 <a-ring radius-inner="0.8" radius-outer="0.82" rotation="-85 0 0" color="#888"></a-ring>
 
                 <!-- Moon Orbit -->
                 <a-entity rotation="0 0 5"
-                    animation="property: rotation; to: 0 360 0; dur: 2000; loop: true; easing: linear">
+                    animation="property: rotation; to: 0 360 0; dur: 8000; loop: true; easing: linear">
 
                     <!-- Moon -->
                     <a-sphere position="0.8 0 0" radius="0.1" color="#ccc" material="roughness: 1; src: #Moon"
-                        animation="property: rotation; to: 0 360 0; dur: 2000; loop: true; easing: linear">
+                        animation="property: rotation; to: 0 360 0; dur: 8000; loop: true; easing: linear">
+                        <a-entity troika-text="
+                                        value: Moon;
+                                        color: white;
+                                        fontSize: 0.1;
+                                        align: center" position="0 0.3 0" rotation="0 0 0">
+                        </a-entity>
                     </a-sphere>
-                    <a-text value="MOON" align="center" position="0 0.3 0" rotation="0 0 0" width="1" color="#ffff00"
-                        font="#exoFont">
-                    </a-text>
                 </a-entity>
             </a-entity>
         </a-entity>
@@ -130,21 +142,26 @@
         <a-entity animation="property: rotation; to: 0 360 0; dur: 12000; loop: true; easing: linear">
             <a-sphere position="6 0 0" radius="0.3" color="#c1440e" material="roughness: 1; src: #Mars"
                 animation="property: rotation; to: 0 360 0; dur: 12000; loop: true; easing: linear">
+                <a-entity troika-text="
+                                value: MARS;
+                                color: white;
+                                fontSize: 0.2;
+                                align: center" position="0 0.5 0" rotation="0 0 0">
+                </a-entity>
             </a-sphere>
-            <a-text value="MARS" align="center" position="0 0.5 0" rotation="0 0 0" width="2.5" color="#ffff00"
-                font="#exoFont">
-            </a-text>
         </a-entity>
 
         <!-- Jupiter -->
         <a-entity animation="property: rotation; to: 0 360 0; dur: 20000; loop: true; easing: linear">
             <a-sphere position="8 0 0" radius="1" color="#d2b48c" material="roughness: 1; src: #Jupiter"
                 animation="property: rotation; to: 0 360 0; dur: 20000; loop: true; easing: linear">
+                <a-entity troika-text="
+                                value: JUPITER;
+                                color: white;
+                                fontSize: 0.3;
+                                align: center" position="0 1.2 0" rotation="0 0 0">
+                </a-entity>
             </a-sphere>
-            <a-text value="JUPITER" align="center" position="0 0.6 0" rotation="0 0 0" width="2.5" color="#ffff00"
-                font="#exoFont">
-
-            </a-text>
         </a-entity>
 
         <!-- Saturn -->
@@ -153,10 +170,13 @@
                 <a-entity rotation="26.7 0 0">
                     <a-sphere radius="0.9" material="src: #Saturn; roughness: 1"
                         animation="property: rotation; to: 0 360 0; dur: 40000; loop: true; easing: linear">
+                        <a-entity troika-text="
+                                        value: SATURN;
+                                        color: white;
+                                        fontSize: 0.3;
+                                        align: center" position="0 1.1 0" rotation="0 0 0">
+                        </a-entity>
                     </a-sphere>
-                    <a-text value="SATURN" align="center" position="0 1.2 0" rotation="0 0 0" width="3" color="#ffff00"
-                        font="#exoFont">
-                    </a-text>
                     <a-ring radius-inner="1.2" radius-outer="1.6" rotation="90 0 0" segments-theta="128"
                         theta-length="360"
                         material="src: #SaturnRing; transparent: true; alphaTest: 0.5; side: double; roughness: 1; metalness: 0">
@@ -170,20 +190,26 @@
         <a-entity animation="property: rotation; to: 0 360 0; dur: 32000; loop: true; easing: linear">
             <a-sphere position="12 0 0" radius="0.6" color="#7fffd4" material="roughness: 1; src: #Uranus"
                 animation="property: rotation; to: 0 -360 0; dur: 32000; loop: true; easing: linear">
+                <a-entity troika-text="
+                                value: URANUS;
+                                color: white;
+                                fontSize: 0.3;
+                                align: center" position="0 0.8 0" rotation="0 0 0">
+                </a-entity>
             </a-sphere>
-            <a-text value="URANUS" align="center" position="0 0.8 0" rotation="0 0 0" width="3" color="#ffff00"
-                font="#exoFont">
-            </a-text>
         </a-entity>
 
         <!-- Neptune -->
         <a-entity animation="property: rotation; to: 0 360 0; dur: 40000; loop: true; easing: linear">
             <a-sphere position="14 0 0" radius="0.6" color="#4169e1" material="roughness: 1; src: #Neptune"
                 animation="property: rotation; to: 0 360 0; dur: 40000; loop: true; easing: linear">
+                <a-entity troika-text="
+                                value: NEPTUNE;
+                                color: white;
+                                fontSize: 0.3;
+                                align: center" position="0 0.8 0" rotation="0 0 0">
+                </a-entity>
             </a-sphere>
-            <a-text value="NEPTUNE" align="center" position="0 0.8 0" rotation="0 0 0" width="3" color="#ffff00"
-                font="#exoFont">
-            </a-text>
         </a-entity>
 
     </a-scene>
