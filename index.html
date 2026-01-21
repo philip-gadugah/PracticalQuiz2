@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>A-Frame Solar System</title>
+    <script src="script/aframe.min.js"></script>
+</head>
+
+<body>
+    <a-scene background="color: #000010" vr-mode-ui="enabled: true">
+
+        <!-- Assets -->
+        <a-asset>
+            <img src="texture/2k_earth_daymap.jpg" alt="Earth" id="Earth">
+            <img src="texture/2k_moon.jpg" alt="Moon" id="Moon">
+            <img src="texture/2k_saturn.jpg" alt="Saturn" id="Saturn">
+            <img src="texture/2k_mars.jpg" alt="Mars" id="Mars">
+            <img src="texture/2k_jupiter.jpg" alt="Jupiter" id="Jupiter">
+            <img src="texture/2k_venus_surface.jpg" alt="Venus" id="Venus">
+            <img src="texture/2k_venus_atmosphere.jpg" alt="VenusAt">
+            <img src="texture/2k_neptune.jpg" alt="Neptune" id="Neptune">
+            <img src="texture/2k_uranus.jpg" alt="Uranus" id="Uranus">
+            <img src="texture/2k_mercury.jpg" alt="Mercury" id="Mercury">
+            <img src="texture/2k_saturn_ring_alpha.png" alt="Saturn Ring" id="SaturnRing">
+            <img src="texture/2k_stars.jpg" alt="Stars" id="Stars">
+            <img src="texture/2k_stars_milky_way.jpg" alt="milky_way" id="MilkyWay">
+            <img src="texture/2k_sun.jpg" alt="Sun" id="Sun">
+        </a-asset>
+
+        <!-- Building the Ubiverse around the Sun and planets -->
+        <a-sphere radius="100" material="src: #MilkyWay; side: back; roughness: 1; metalness: 0"
+            animation="property: rotation; to: 0 360 0; dur: 600000; loop: true; easing: linear"></a-sphere>
+
+        <!-- Camera -->
+        <a-entity position="0 6 22">
+            <a-camera>
+            </a-camera>
+        </a-entity>
+
+        <!-- Lights -->
+        <a-light type="point" position="0 0 0" intensity="2"></a-light>
+        <a-light type="ambient" intensity="0.5"></a-light>
+
+        <!-- Sun -->
+        <a-sphere radius="2" color="#ffaa00" position="0 0 0" material="roughness: 1; src: #Sun"
+            animation="property: rotation; to: 0 360 0; dur: 90000; loop: true; easing: linear"></a-sphere>
+
+        <!-- Orbits -->
+        <a-ring radius-inner="3" radius-outer="3.05" rotation="-90 0 0" segments-theta="256" theta-length="360"
+            material="color: #ffffff; transparent: true; opacity: 0.25; side: double"></a-ring>
+        <a-ring radius-inner="4" radius-outer="4.05" rotation="-90 0 0" segments-theta="256" theta-length="360"
+            material="color: #ffffff; transparent: true; opacity: 0.25; side: double"></a-ring>
+        <a-ring radius-inner="5" radius-outer="5.05" rotation="-90 0 0" segments-theta="256" theta-length="360"
+            material="color: #ffffff; transparent: true; opacity: 0.25; side: double"></a-ring>
+        <a-ring radius-inner="6" radius-outer="6.05" rotation="-90 0 0" segments-theta="256" theta-length="360"
+            material="color: #ffffff; transparent: true; opacity: 0.25; side: double"></a-ring>
+        <a-ring radius-inner="8" radius-outer="8.05" rotation="-90 0 0" segments-theta="256" theta-length="360"
+            material="color: #ffffff; transparent: true; opacity: 0.25; side: double"></a-ring>
+        <a-ring radius-inner="10" radius-outer="10.05" rotation="-90 0 " segments-theta="256" theta-length="360"
+            material="color: #ffffff; transparent: true; opacity: 0.25; side: double"></a-ring>
+        <a-ring radius-inner="12" radius-outer="12.05" rotation="-90 0 " segments-theta="256" theta-length="360"
+            material="color: #ffffff; transparent: true; opacity: 0.25; side: double"></a-ring>
+        <a-ring radius-inner="14" radius-outer="14.05" rotation="-90 0 " segments-theta="256" theta-length="360"
+            material="color: #ffffff; transparent: true; opacity: 0.25; side: double"></a-ring>
+
+        <!-- Mercury -->
+        <a-entity animation="property: rotation; to: 0 360 0; dur: 3000; loop: true; easing: linear">
+            <a-sphere position="3 0 0" radius="0.2" color="#aaa" material="roughness: 1; src: #Mercury"
+                animation="property: rotation; to: 0 360 0; dur: 3000; loop: true; easing: linear"></a-sphere>
+        </a-entity>
+
+        <!-- Venus -->
+        <a-entity animation="property: rotation; to: 0 360 0; dur: 5000; loop: true; easing: linear">
+            <a-sphere position="4 0 0" radius="0.35" color="#e6b566" material="roughness: 1; src: #Venus"
+                animation="property: rotation; to: 0 -360 0; dur: 5000; loop: true; easing: linear"></a-sphere>
+        </a-entity>
+
+        <!-- EARTH ORBIT AROUND SUN -->
+        <a-entity animation="property: rotation; to: 0 360 0; dur: 8000; loop: true; easing: linear">
+
+            <!-- EARTH SYSTEM -->
+            <a-entity position="5 0 0">
+
+                <!-- Earth -->
+                <a-sphere radius="0.4" color="#2a6cff"
+                    animation="property: rotation; to: 0 360 0; dur: 30000; loop: true; easing: linear"
+                    material="roughness: 1; src: #Earth">
+                </a-sphere>
+
+                <!-- Moon Orbit Ring -->
+                <a-ring radius-inner="0.8" radius-outer="0.82" rotation="-85 0 0" color="#888"></a-ring>
+
+                <!-- Moon Orbit -->
+                <a-entity rotation="0 0 5"
+                    animation="property: rotation; to: 0 360 0; dur: 2000; loop: true; easing: linear">
+
+                    <!-- Moon -->
+                    <a-sphere position="0.8 0 0" radius="0.1" color="#ccc" material="roughness: 1; src: #Moon"
+                        animation="property: rotation; to: 0 360 0; dur: 2000; loop: true; easing: linear">
+                    </a-sphere>
+
+                </a-entity>
+
+            </a-entity>
+
+        </a-entity>
+
+
+
+        <!-- Mars -->
+        <a-entity animation="property: rotation; to: 0 360 0; dur: 12000; loop: true; easing: linear">
+            <a-sphere position="6 0 0" radius="0.3" color="#c1440e" material="roughness: 1; src: #Mars"
+                animation="property: rotation; to: 0 360 0; dur: 12000; loop: true; easing: linear"></a-sphere>
+        </a-entity>
+
+        <!-- Jupiter -->
+        <a-entity animation="property: rotation; to: 0 360 0; dur: 20000; loop: true; easing: linear">
+            <a-sphere position="8 0 0" radius="1" color="#d2b48c" material="roughness: 1; src: #Jupiter"
+                animation="property: rotation; to: 0 360 0; dur: 20000; loop: true; easing: linear"></a-sphere>
+        </a-entity>
+
+        <!-- Saturn -->
+        <a-entity animation="property: rotation; to: 0 360 0; dur: 26000; loop: true; easing: linear">
+            <a-entity position="10 0 0">
+                <a-entity rotation="26.7 0 0">
+                    <a-sphere radius="0.9" material="src: #Saturn; roughness: 1"
+                        animation="property: rotation; to: 0 360 0; dur: 40000; loop: true; easing: linear">
+                    </a-sphere>
+                    <a-ring radius-inner="1.2" radius-outer="1.6" rotation="90 0 0" segments-theta="128"
+                        theta-length="360"
+                        material="src: #SaturnRing; transparent: true; alphaTest: 0.5; side: double; roughness: 1; metalness: 0">
+                    </a-ring>
+                </a-entity>
+            </a-entity>
+        </a-entity>
+
+
+        <!-- Uranus -->
+        <a-entity animation="property: rotation; to: 0 360 0; dur: 32000; loop: true; easing: linear">
+            <a-sphere position="12 0 0" radius="0.6" color="#7fffd4" material="roughness: 1; src: #Uranus"
+                animation="property: rotation; to: 0 -360 0; dur: 32000; loop: true; easing: linear"></a-sphere>
+        </a-entity>
+
+        <!-- Neptune -->
+        <a-entity animation="property: rotation; to: 0 360 0; dur: 40000; loop: true; easing: linear">
+            <a-sphere position="14 0 0" radius="0.6" color="#4169e1" material="roughness: 1; src: #Neptune"
+                animation="property: rotation; to: 0 360 0; dur: 40000; loop: true; easing: linear"></a-sphere>
+        </a-entity>
+
+    </a-scene>
+</body>
+
+</html>
